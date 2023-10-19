@@ -1,12 +1,31 @@
-import { LayoutProps } from '@/models/common'
-import * as React from 'react'
+import { LayoutProps } from '@/models'
+import { Box, Stack } from '@mui/material'
+import Link from 'next/link'
+import Footer from '../common/footer'
+import Header from '../common/header'
 
 export function MainLayout({ children }: LayoutProps) {
 	return (
-		<div>
-			<h1>Main layout</h1>
+		<Stack minHeight="100vh">
+			<Header />
 
-			<div>{children}</div>
-		</div>
+			<Link href="/works">
+				<a>Works</a>
+			</Link>
+
+			<Link href="/blog">
+				<a>Blog</a>
+			</Link>
+
+			<Link href="/contact">
+				<a>Contact</a>
+			</Link>
+
+			<Box component="main" flex={1}>
+				{children}
+			</Box>
+
+			<Footer />
+		</Stack>
 	)
 }

@@ -1,5 +1,4 @@
-import { EmptyLayout } from '@/components/layout'
-import type { AppProps } from 'next/app'
+import { MainLayout } from '@/components/layout'
 import { AppPropsWithLayout } from '../models'
 import { SWRConfig } from 'swr'
 import axiosClient from 'api-client/axios-client'
@@ -19,7 +18,7 @@ function MyApp({
 	pageProps,
 	emotionCache = clientSideEmotionCache,
 }: AppPropsWithLayout) {
-	const Layout = Component.Layout ?? EmptyLayout
+	const Layout = Component.Layout ?? MainLayout
 	const PrivatePage = Component.isPrivate ? Auth : Fragment
 
 	return (
