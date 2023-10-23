@@ -24,7 +24,7 @@ export default function HeaderMobile() {
 	}
 
 	return (
-		<Stack direction="row" justifyContent="flex-end" display={{ sm: 'flex', md: 'none' }}>
+		<Stack direction="row" justifyContent="flex-end" display={{ xs: 'flex', md: 'none' }}>
 			<Button sx={{ p: 2, color: 'black' }} onClick={toggleDrawer(true)}>
 				HEADER MOBILE
 			</Button>

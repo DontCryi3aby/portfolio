@@ -9,14 +9,13 @@ export default function HeaderDesktop() {
 	const router = useRouter()
 
 	return (
-		<Stack
-			direction="row"
-			justifyContent="flex-end"
-			display={{ xs: 'none', sm: 'none', md: 'flex' }}
-		>
+		<Stack direction="row" justifyContent="flex-end" display={{ xs: 'none', md: 'flex' }}>
 			{ROUTE_LIST.map((route, index) => (
 				<Link key={index} href={route.path} passHref>
-					<MuiLink sx={{ p: 2 }} className={clsx({ active: router.pathname === route.path })}>
+					<MuiLink
+						sx={{ p: 2, fontWeight: 'medium' }}
+						className={clsx({ active: router.pathname === route.path })}
+					>
 						{route.label}
 					</MuiLink>
 				</Link>

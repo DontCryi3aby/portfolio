@@ -1,8 +1,13 @@
+import { HeroSection } from '@/components/home'
 import { NextPageWithLayout } from '@/models'
-import { Container } from '@mui/material'
+import { Box } from '@mui/material'
 
 const Home: NextPageWithLayout = () => {
-	return <Container>Home Page</Container>
+	return (
+		<Box>
+			<HeroSection />
+		</Box>
+	)
 }
 
 export default Home
