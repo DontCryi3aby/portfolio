@@ -8,8 +8,8 @@ import { createEmotionCache, theme } from '@/utils/index'
 import { CacheProvider } from '@emotion/react'
 import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
+import { Box } from '@mui/material'
 import styles from '../styles/globals.module.css'
-
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache()
 

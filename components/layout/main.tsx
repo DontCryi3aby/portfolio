@@ -9,18 +9,6 @@ export function MainLayout({ children }: LayoutProps) {
 		<Stack minHeight="100vh">
 			<Header />
 
-			<Link href="/works">
-				<a>Works</a>
-			</Link>
-
-			<Link href="/blog">
-				<a>Blog</a>
-			</Link>
-
-			<Link href="/contact">
-				<a>Contact</a>
-			</Link>
-
 			<Box component="main" flex={1}>
 				{children}
 			</Box>
