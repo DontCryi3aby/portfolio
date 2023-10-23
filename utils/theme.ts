@@ -14,6 +14,9 @@ export const theme = createTheme({
 			main: red.A400,
 		},
 	},
+	typography: {
+		fontFamily: 'Heebo, sans-serif',
+	},
 	components: {
 		MuiContainer: {
 			defaultProps: {
