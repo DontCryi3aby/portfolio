@@ -1,6 +1,6 @@
 import { Box, Container, Typography } from '@mui/material'
 import * as React from 'react'
-import { WorkList } from '../work/work-list'
+import { WorkList } from '../work'
 
 const WORK_LIST_DEMO = [
 	{
