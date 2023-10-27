@@ -1,11 +1,12 @@
 import { PostItem } from '@/components/blog'
+import { Post } from '@/models/post'
 import { getBlogList } from '@/utils/blogs'
 import { Box, Container, Divider, Link as MuiLink, Typography } from '@mui/material'
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import Link from 'next/link'
 
 export interface BlogListProps {
-	blogs: any[]
+	blogs: Post[]
 }
 
 export default function BlogList({ blogs }: BlogListProps) {
