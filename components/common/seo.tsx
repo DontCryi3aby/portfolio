@@ -17,7 +17,7 @@ export function Seo({ data }: SeoProps) {
 
 	return (
 		<Head>
-			<title>Portfolio Project</title>
+			<title>{title}</title>
 			<meta name="title" content={title} />
 			<meta name="description" content={description} />
 

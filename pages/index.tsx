@@ -8,7 +8,7 @@ const Home: NextPageWithLayout = () => {
 		<Box>
 			<Seo
 				data={{
-					title: 'Portfolio Project',
+					title: 'Portfolio - Nguyen Ngoc Thach',
 					url: 'https://portfolio-nq4ifan3h-dontcryi3aby.vercel.app/',
 					description: 'Make the easiest way for SEO with NextJS',
 					thumnailUrl:

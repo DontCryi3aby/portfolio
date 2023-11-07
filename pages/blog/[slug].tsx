@@ -1,3 +1,4 @@
+import { Seo } from '@/components/common'
 import { Post } from '@/models/post'
 import { getBlogList } from '@/utils/blogs'
 import { Box, Container, Typography } from '@mui/material'
@@ -21,6 +22,17 @@ export default function BlogDetail({ blog }: BlogDetailProps) {
 
 	return (
 		<Box>
+			<Seo
+				data={{
+					title: blog.title,
+					url: `${process.env.HOST_URL}/blog/${blog.slug}`,
+					description: blog.description,
+					thumnailUrl:
+						blog.image ||
+						'https://res.cloudinary.com/dfuskfien/image/upload/v1698292014/Portfolio/logoNext_m18oww.jpg',
+				}}
+			/>
+
 			<Container>
 				<Typography variant="h4" fontWeight="bold">
 					{blog.title}
