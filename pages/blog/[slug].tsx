@@ -2,11 +2,14 @@ import { Post } from '@/models/post'
 import { getBlogList } from '@/utils/blogs'
 import { Box, Container, Typography } from '@mui/material'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeDocument from 'rehype-document'
 import rehypeFormat from 'rehype-format'
+import rehypeSlug from 'rehype-slug'
 import rehypeStringify from 'rehype-stringify'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
+import remarkToc from 'remark-toc'
 import { unified } from 'unified'
 
 export interface BlogDetailProps {
@@ -53,7 +56,10 @@ export const getStaticProps: GetStaticProps<BlogDetailProps> = async (
 
 	const file = await unified()
 		.use(remarkParse)
+		.use(remarkToc)
 		.use(remarkRehype)
+		.use(rehypeSlug)
+		.use(rehypeAutolinkHeadings, { behavior: 'wrap' })
 		.use(rehypeDocument, { title: blog.title })
 		.use(rehypeFormat)
 		.use(rehypeStringify)

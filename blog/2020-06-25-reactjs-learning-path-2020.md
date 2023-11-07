@@ -34,6 +34,8 @@ Nếu như mọi người chưa biết Javascript là gì, thì mình khuyên c�
 - Tại sao phải cần ReactJS, sao không viết thuần javascript?
 - Sẽ hơi khó hiểu khi mới đầu tiếp cận ReactJS, nhưng không sao, cứ đi tiếp nha hehee
 
+## Contents
+
 ### 0. Setup môi trường làm việc
 
 **Bạn cần gì để bắt đầu code được ReactJS:**

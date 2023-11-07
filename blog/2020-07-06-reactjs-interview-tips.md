@@ -30,6 +30,8 @@ Chắc hẳn nhiều bạn rất hồi hộp, lo lắng khi chuẩn bị cho bu�
 
 ---
 
+## Contents
+
 ## Một vài lưu ý chung
 
 Một buổi phỏng vấn thường gồm các phần:
