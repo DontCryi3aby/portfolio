@@ -1,9 +1,13 @@
 import { Post } from '@/models/post'
 import { getBlogList } from '@/utils/blogs'
-import { Box, Container } from '@mui/material'
+import { Box, Container, Typography } from '@mui/material'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
-import { useRouter } from 'next/router'
-import * as React from 'react'
+import rehypeDocument from 'rehype-document'
+import rehypeFormat from 'rehype-format'
+import rehypeStringify from 'rehype-stringify'
+import remarkParse from 'remark-parse'
+import remarkRehype from 'remark-rehype'
+import { unified } from 'unified'
 
 export interface BlogDetailProps {
 	blog: Post
@@ -15,12 +19,13 @@ export default function BlogDetail({ blog }: BlogDetailProps) {
 	return (
 		<Box>
 			<Container>
-				<h1>Post Detail Page</h1>
-
-				<p>{blog.title}</p>
-				<p>{blog.author?.name}</p>
-				<p>{blog.description}</p>
-				<p>{blog.mdContent}</p>
+				<Typography variant="h4" fontWeight="bold">
+					{blog.title}
+				</Typography>
+				<Typography variant="h5" fontWeight="bold">
+					{blog.author?.name}
+				</Typography>
+				<Box dangerouslySetInnerHTML={{ __html: blog.htmlContent || '' }}></Box>
 			</Container>
 		</Box>
 	)
@@ -45,6 +50,15 @@ export const getStaticProps: GetStaticProps<BlogDetailProps> = async (
 
 	const blog = blogList.find((b) => b.slug === slug)
 	if (!blog) return { notFound: true }
+
+	const file = await unified()
+		.use(remarkParse)
+		.use(remarkRehype)
+		.use(rehypeDocument, { title: blog.title })
+		.use(rehypeFormat)
+		.use(rehypeStringify)
+		.process(blog.mdContent)
+	blog.htmlContent = file.toString()
 
 	return { props: { blog } }
 }
