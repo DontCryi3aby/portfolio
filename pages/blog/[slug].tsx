@@ -28,7 +28,7 @@ export default function BlogDetail({ blog }: BlogDetailProps) {
 					url: `${process.env.HOST_URL}/blog/${blog.slug}`,
 					description: blog.description,
 					thumnailUrl:
-						blog.image ||
+						blog?.image ||
 						'https://res.cloudinary.com/dfuskfien/image/upload/v1698292014/Portfolio/logoNext_m18oww.jpg',
 				}}
 			/>
