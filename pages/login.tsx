@@ -1,6 +1,6 @@
 import { LoginForm } from '@/components/auth'
 import { LoginPayload } from '@/models'
-import { Paper, Typography } from '@mui/material'
+import { Container, Paper, Typography } from '@mui/material'
 import { useAuth } from 'hooks'
 import router from 'next/router'
 
@@ -18,10 +18,12 @@ export default function Login() {
 	}
 
 	return (
-		<Paper elevation={2} sx={{ maxWidth: '480px', mt: 4, mx: 'auto', textAlign: 'center', p: 4 }}>
-			<Typography variant="h5">Login to discover moreover</Typography>
+		<Container>
+			<Paper elevation={2} sx={{ maxWidth: '480px', mt: 4, mx: 'auto', textAlign: 'center', p: 4 }}>
+				<Typography variant="h5">Login to discover moreover</Typography>
 
-			<LoginForm onSubmit={handleLogin} />
-		</Paper>
+				<LoginForm onSubmit={handleLogin} />
+			</Paper>
+		</Container>
 	)
 }
