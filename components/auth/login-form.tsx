@@ -3,9 +3,14 @@ import { useForm } from 'react-hook-form'
 import { InputField } from '../form'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { useState } from 'react'
+import { LoginPayload } from '@/models'
 
-export const LoginForm = () => {
-	const { control, handleSubmit } = useForm({
+export interface LoginFormProps {
+	onSubmit?: (payload: LoginPayload) => void
+}
+
+export const LoginForm = ({ onSubmit }: LoginFormProps) => {
+	const { control, handleSubmit } = useForm<LoginPayload>({
 		defaultValues: {
 			username: '',
 			password: '',
@@ -14,7 +19,10 @@ export const LoginForm = () => {
 
 	const [isShowPassword, setIsShowPassword] = useState(false)
 
-	const handleLoginSubmit = (values: any) => console.log(values)
+	const handleLoginSubmit = (payload: LoginPayload) => {
+		console.log(payload)
+		onSubmit?.(payload)
+	}
 
 	return (
 		<Box component="form" onSubmit={handleSubmit(handleLoginSubmit)}>

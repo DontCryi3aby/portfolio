@@ -1,17 +1,15 @@
 import { LoginForm } from '@/components/auth'
-import { Typography } from '@mui/material'
+import { LoginPayload } from '@/models'
 import { authApi } from 'api-client'
 import { useAuth } from 'hooks'
-import router from 'next/router'
-import * as React from 'react'
 
 export default function Login() {
 	const { profile, login, logout } = useAuth({
 		revalidateOnMount: false,
 	})
-	const handleLogin = async () => {
+	const handleLogin = async (payload: LoginPayload) => {
 		try {
-			await login()
+			await login(payload)
 			console.log('redirect')
 		} catch (error) {
 			console.log(error)
@@ -35,5 +33,5 @@ export default function Login() {
 		}
 	}
 
-	return <LoginForm />
+	return <LoginForm onSubmit={handleLogin} />
 }

@@ -1,6 +1,6 @@
 import { Auth } from '@/components/common'
 import { MainLayout } from '@/components/layout'
-import styles from '../styles/globals.module.css'
+// import '../styles/globals.css'
 import { createEmotionCache, theme } from '@/utils'
 import { CacheProvider } from '@emotion/react'
 import CssBaseline from '@mui/material/CssBaseline'
