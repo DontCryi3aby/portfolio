@@ -1,11 +1,11 @@
-import { Box, Button, IconButton, InputAdornment, Paper, Typography } from '@mui/material'
-import { useForm } from 'react-hook-form'
-import { InputField } from '../form'
-import { Visibility, VisibilityOff } from '@mui/icons-material'
-import { useState } from 'react'
 import { LoginPayload } from '@/models'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { Visibility, VisibilityOff } from '@mui/icons-material'
+import { Box, Button, CircularProgress, IconButton, InputAdornment } from '@mui/material'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
+import { InputField } from '../form'
 
 export interface LoginFormProps {
 	onSubmit?: (payload: LoginPayload) => void
@@ -25,7 +25,11 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
 		})
 		.required()
 
-	const { control, handleSubmit } = useForm<LoginPayload>({
+	const {
+		control,
+		handleSubmit,
+		formState: { isSubmitting },
+	} = useForm<LoginPayload>({
 		defaultValues: {
 			username: '',
 			password: '',
@@ -35,9 +39,9 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
 
 	const [isShowPassword, setIsShowPassword] = useState(false)
 
-	const handleLoginSubmit = (payload: LoginPayload) => {
+	const handleLoginSubmit = async (payload: LoginPayload) => {
 		console.log(payload)
-		onSubmit?.(payload)
+		await onSubmit?.(payload)
 	}
 
 	return (
@@ -63,7 +67,14 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
 				}}
 			/>
 
-			<Button type="submit" variant="contained" fullWidth sx={{ mt: 2 }}>
+			<Button
+				type="submit"
+				variant="contained"
+				fullWidth
+				startIcon={isSubmitting ? <CircularProgress color="inherit" size="1em" /> : null}
+				disabled={isSubmitting}
+				sx={{ mt: 2 }}
+			>
 				Login
 			</Button>
 		</Box>
