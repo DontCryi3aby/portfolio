@@ -21,6 +21,8 @@ export const InputField = ({
 		fieldState: { error },
 	} = useController({ name, control })
 
+	console.log(name, error)
+
 	return (
 		<TextField
 			fullWidth
@@ -31,6 +33,8 @@ export const InputField = ({
 			inputRef={ref}
 			onChange={onChange}
 			onBlur={onBlur}
+			error={!!error}
+			helperText={error?.message}
 			{...rest}
 		/>
 	)
