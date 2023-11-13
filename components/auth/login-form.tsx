@@ -1,4 +1,4 @@
-import { Box, Button, IconButton, InputAdornment } from '@mui/material'
+import { Box, Button, IconButton, InputAdornment, Paper, Typography } from '@mui/material'
 import { useForm } from 'react-hook-form'
 import { InputField } from '../form'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
@@ -41,11 +41,12 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
 	}
 
 	return (
-		<Box component="form" onSubmit={handleSubmit(handleLoginSubmit)}>
-			<InputField name="username" placeholder="Enter username..." control={control} />
+		<Box component="form" onSubmit={handleSubmit(handleLoginSubmit)} mt={1}>
+			<InputField name="username" label="Username" control={control} />
 			<InputField
 				type={isShowPassword ? 'text' : 'password'}
 				name="password"
+				label="Password"
 				control={control}
 				InputProps={{
 					endAdornment: (
@@ -60,10 +61,9 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
 						</InputAdornment>
 					),
 				}}
-				placeholder="Enter password..."
 			/>
 
-			<Button type="submit" variant="contained">
+			<Button type="submit" variant="contained" fullWidth sx={{ mt: 2 }}>
 				Login
 			</Button>
 		</Box>

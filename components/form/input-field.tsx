@@ -21,8 +21,6 @@ export const InputField = ({
 		fieldState: { error },
 	} = useController({ name, control })
 
-	console.log(name, error)
-
 	return (
 		<TextField
 			fullWidth
