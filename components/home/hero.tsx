@@ -1,6 +1,7 @@
 import { Box, Container, Stack, Typography, Button } from '@mui/material'
 import Image from 'next/image'
 import avatar from '@/public/assets/imgs/avt.png'
+import { Link } from '@mui/material'
 
 export function HeroSection() {
 	return (
@@ -14,17 +15,27 @@ export function HeroSection() {
 				>
 					<Box>
 						<Typography component="h1" variant="h3" fontWeight="bold">
-							Hi, I am John,
+							Hi, I am Thach,
 							<br />
 							Creative Technologist
 						</Typography>
 						<Typography mt={{ xs: 3, md: 5 }}>
-							Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit
-							officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud
-							amet.
+							This is a self-learing project using <b>NextJS</b>
+							<br />
+							Contact for work:
+							<Link sx={{ color: 'primary.main', ml: '2px' }} href="mailto:i3oyhp@gmail.com">
+								i3oyhp@gmail.com
+							</Link>
+							<br />
+							Github repository:
+							<Link sx={{ ml: '2px' }} href="https://github.com/DontCryi3aby/portfolio">
+								https://github.com/DontCryi3aby/portfolio
+							</Link>
+							<br />
+							Click Download CV below to view my CV!
 						</Typography>
 						<Button variant="contained" size="large" sx={{ mt: { xs: 3, md: 5 } }}>
-							Download Resume
+							Download CV
 						</Button>
 					</Box>
 
