@@ -1,8 +1,11 @@
 import { LayoutProps } from '@/models'
 import { Box, Stack } from '@mui/material'
-import Link from 'next/link'
 import Footer from '../common/footer'
-import Header from '../common/header'
+import dynamic from 'next/dynamic'
+
+const Header = dynamic(() => import('../common/header'), {
+	ssr: false,
+})
 
 export function MainLayout({ children }: LayoutProps) {
 	return (

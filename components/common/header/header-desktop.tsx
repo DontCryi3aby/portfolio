@@ -31,7 +31,12 @@ export default function HeaderDesktop() {
 			))}
 			{!isLoggedIn ? (
 				<Link href="/login" passHref>
-					<MuiLink sx={{ p: 2, fontWeight: 'medium' }}>Login</MuiLink>
+					<MuiLink
+						sx={{ p: 2, fontWeight: 'medium' }}
+						className={clsx({ active: pageRootPerPage === '/login' })}
+					>
+						Login
+					</MuiLink>
 				</Link>
 			) : (
 				<MuiLink sx={{ p: 2, fontWeight: 'medium', cursor: 'pointer' }} onClick={logout}>
