@@ -40,7 +40,6 @@ export const LoginForm = ({ onSubmit }: LoginFormProps) => {
 	const [isShowPassword, setIsShowPassword] = useState(false)
 
 	const handleLoginSubmit = async (payload: LoginPayload) => {
-		console.log(payload)
 		await onSubmit?.(payload)
 	}
 
