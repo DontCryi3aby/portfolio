@@ -6,7 +6,6 @@ export interface WorksPageProps {}
 
 export default function WorksPage(props: WorksPageProps) {
 	const { data, isLoading } = useWorkList({ params: { _page: 1, _limit: 3 } })
-	console.log({ data, isLoading })
 
 	return (
 		<Box>
