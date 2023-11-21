@@ -6,5 +6,5 @@ export interface Work {
 	tagList: string[]
 	shortDescription: string
 	fullDescription: string
-	thumbnail: string
+	thumbnailUrl: string
 }

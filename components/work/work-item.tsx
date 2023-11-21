@@ -12,7 +12,7 @@ export function WorkItem({ work }: WorkItemProps) {
 		<Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} mt={2}>
 			<Box width={{ xs: '100%', sm: '246px' }} flexShrink={0}>
 				<Image
-					src={work.thumbnail}
+					src={work.thumbnailUrl}
 					layout="responsive"
 					alt="work thumnail"
 					width={246}
