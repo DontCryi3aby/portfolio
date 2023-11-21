@@ -1,8 +1,7 @@
 import { STORAGE_KEYS } from '@/constants/storage-keys'
 import { LoginPayload } from '@/models'
 import { authApi } from 'api-client'
-import useSWR from 'swr'
-import { PublicConfiguration } from 'swr/_internal'
+import useSWR, { SWRConfiguration } from 'swr'
 
 const getUser = () => {
 	try {
@@ -12,7 +11,7 @@ const getUser = () => {
 	}
 }
 
-export function useAuth(options?: Partial<PublicConfiguration>) {
+export function useAuth(options?: Partial<SWRConfiguration>) {
 	const {
 		data: profile,
 		error,
