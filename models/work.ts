@@ -8,3 +8,7 @@ export interface Work {
 	fullDescription: string
 	thumbnailUrl: string
 }
+
+export interface WorkFiltersPayload {
+	search: ''
+}

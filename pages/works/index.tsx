@@ -1,6 +1,6 @@
-import { WorkList } from '@/components/work'
+import { WorkFilters, WorkList } from '@/components/work'
 import { useWorkList } from '@/hooks'
-import { ListParams } from '@/models'
+import { ListParams, WorkFiltersPayload } from '@/models'
 import { Box, Container, Pagination, Stack, Typography } from '@mui/material'
 import { useState } from 'react'
 
@@ -20,12 +20,22 @@ export default function WorksPage(props: WorksPageProps) {
 		}))
 	}
 
+	const handleFiltersSubmit = (newFilters: WorkFiltersPayload) => {
+		setFilters((prev) => ({
+			...prev,
+			_page: 1,
+			title_like: newFilters.search,
+		}))
+	}
+
 	return (
 		<Box>
 			<Container>
 				<Typography component="h1" variant="h4" fontWeight="bold">
 					Work
 				</Typography>
+
+				<WorkFilters onSubmit={handleFiltersSubmit} />
 
 				<WorkList workList={data?.data || []} loading={isLoading} />
 
