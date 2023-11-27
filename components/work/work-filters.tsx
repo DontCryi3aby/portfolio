@@ -8,10 +8,11 @@ import * as yup from 'yup'
 import { InputField } from '../form'
 
 export interface WorkFiltersProps {
+	initialValues?: WorkFiltersPayload
 	onSubmit?: (payload: WorkFiltersPayload) => void
 }
 
-export const WorkFilters = ({ onSubmit }: WorkFiltersProps) => {
+export const WorkFilters = ({ initialValues, onSubmit }: WorkFiltersProps) => {
 	const {
 		control,
 		handleSubmit,
@@ -19,6 +20,7 @@ export const WorkFilters = ({ onSubmit }: WorkFiltersProps) => {
 	} = useForm<WorkFiltersPayload>({
 		defaultValues: {
 			search: '',
+			...initialValues,
 		},
 	})
 

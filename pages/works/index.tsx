@@ -3,29 +3,54 @@ import { useWorkList } from '@/hooks'
 import { ListParams, WorkFiltersPayload } from '@/models'
 import { Box, Container, Pagination, Stack, Typography } from '@mui/material'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 export interface WorksPageProps {}
 
 export default function WorksPage(props: WorksPageProps) {
-	const [filters, setFilters] = useState<Partial<ListParams>>({ _page: 1, _limit: 3 })
-	const { data, isLoading } = useWorkList({ params: filters })
+	const router = useRouter()
+
+	const filters: Partial<ListParams> = {
+		_page: 1,
+		_limit: 3,
+		...router.query,
+	}
+	const { data, isLoading } = useWorkList({ params: filters, enabled: router.isReady })
 
 	const { _page, _limit, _totalRows } = data?.pagination || {}
 	const totalPages = !!_totalRows ? Math.ceil(_totalRows / _limit) : 0
 
+	const initFiltersValue: WorkFiltersPayload = {
+		search: filters.title_like || '',
+	}
+
 	const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
-		setFilters((prev) => ({
-			...prev,
-			_page: value,
-		}))
+		router.push(
+			{
+				pathname: router.pathname,
+				query: {
+					...filters,
+					_page: value,
+				},
+			},
+			undefined,
+			{ shallow: true }
+		)
 	}
 
 	const handleFiltersSubmit = (newFilters: WorkFiltersPayload) => {
-		setFilters((prev) => ({
-			...prev,
-			_page: 1,
-			title_like: newFilters.search,
-		}))
+		router.push(
+			{
+				pathname: router.pathname,
+				query: {
+					...filters,
+					_page: 1,
+					title_like: newFilters.search,
+				},
+			},
+			undefined,
+			{ shallow: true }
+		)
 	}
 
 	return (
@@ -35,7 +60,9 @@ export default function WorksPage(props: WorksPageProps) {
 					Work
 				</Typography>
 
-				<WorkFilters onSubmit={handleFiltersSubmit} />
+				{router.isReady && (
+					<WorkFilters initialValues={initFiltersValue} onSubmit={handleFiltersSubmit} />
+				)}
 
 				<WorkList workList={data?.data || []} loading={isLoading} />
 

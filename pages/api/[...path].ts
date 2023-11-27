@@ -11,7 +11,7 @@ export const config = {
 }
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<any>) {
-	return new Promise((resolve) => {
+	return new Promise(() => {
 		const cookies = new Cookies(req, res)
 		const token = cookies.get('access_token')
 		if (token) {
@@ -24,10 +24,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<any>) 
 			target: process.env.API_URL,
 			changeOrigin: true,
 			selfHandleResponse: false,
-		})
-
-		proxy.once('proxyRes', () => {
-			resolve(true)
 		})
 	})
 }

@@ -10,5 +10,5 @@ export interface Work {
 }
 
 export interface WorkFiltersPayload {
-	search: ''
+	search: string
 }
